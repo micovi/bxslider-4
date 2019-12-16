@@ -1379,15 +1379,16 @@
       position = {left: 0, top: 0},
       lastChild = null,
       lastShowingIndex, eq, value, requestEl;
-      // store the old index
-      slider.oldIndex = slider.active.index;
-      //set new index
-      slider.active.index = setSlideIndex(slideIndex);
 
       // if plugin is currently in motion, ignore request
       if (slider.working || slider.active.index === slider.oldIndex) { return; }
       // declare that plugin is in motion
       slider.working = true;
+
+      // store the old index
+      slider.oldIndex = slider.active.index;
+      //set new index
+      slider.active.index = setSlideIndex(slideIndex);
 
       performTransition = slider.settings.onSlideBefore.call(el, slider.children.eq(slider.active.index), slider.oldIndex, slider.active.index);
 
